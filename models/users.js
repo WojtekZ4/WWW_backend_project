@@ -20,14 +20,10 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.methods.generateHash = function (password) {
-    console.log('1')
-    console.log(password)
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 userSchema.methods.validPassword = function (password) {
-    console.log('2')
-    console.log(password)
     return bcrypt.compareSync(password, this.password);
 };
 

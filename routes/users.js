@@ -4,7 +4,6 @@ const router = express.Router();
 const ROLES = require('../config/roles');
 
 const verifyRole = (...roles) => (req, res, next) => {
-    console.log('???')
     if (!req.isAuthenticated()) {
         res.send('Not logged in.');
         return;

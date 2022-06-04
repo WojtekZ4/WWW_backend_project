@@ -18,7 +18,6 @@ const uploadFiles = async (req, res, next) => {
         // }
         return next()
     } catch (error) {
-        console.log(error);
         return res.send({
             message: "Error when trying upload image: ${error}",
         });
@@ -61,7 +60,6 @@ router.post('/', verifyRole(ROLES.OWNER, ROLES.ADMIN), uploadFiles, async (req, 
 
 router.patch('/:id', verifyRole(ROLES.OWNER, ROLES.ADMIN), uploadFiles, async (req, res) => {
     try {
-        console.log(req)
         const club = await Club.findByIdAndUpdate(req.params.id, req.body, {new: true});
 
         if (!club) res.status(404).send("No club found");
